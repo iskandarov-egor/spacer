@@ -297,13 +297,13 @@ local function init_indexes(space_name, indexes, keep_obsolete)
 			ind = {id = ind[F._index.iid], name = ind[F._index.name]}
 
 			if ind.id ~= 0 and (not created_indexes[0] or not created_indexes[ind.id]) then
-				log.info("Dropping index %d/'%s' of space '%s'.", ind.id, ind.name, space_name)
-				sp.index[ind.id]:drop()
+				log.info("Not dropping unknown index %d/'%s' of space '%s'.", ind.id, ind.name, space_name)
+				--sp.index[ind.id]:drop()
 			end
 		end
 		if not created_indexes[0] then
-			log.info("Dropping index #0 of space '%s'.", space_name)
-			sp.index[0]:drop()
+			log.info("Not dropping unknown index #0 of space '%s'.", space_name)
+			--sp.index[0]:drop()
 		end
 	end
 end
